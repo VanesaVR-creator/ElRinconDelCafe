@@ -1,0 +1,800 @@
+/* General Styles */
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #FFEED8;
+    color: #4C2B08;
+    padding-top: 120px; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Clicker Script', cursive;
+    color: #603809;
+}
+
+p {
+    font-family: 'Playfair Display', serif;
+    color: #707070;
+}
+
+/* Header */
+header {
+    background-color: #383434;
+    transition: background-color 0.3s ease;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container-hero {
+    background-color: #4b3f41;
+    transition: display 0.3s ease;
+}
+
+.logo-icon {
+    width: 40px; 
+    height: 40px;
+    object-fit: contain; 
+}
+
+.navbar-brand {
+    font-family: 'Clicker Script', cursive;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; /* Default size for desktop */
+    padding: 8px 12px; /* Default padding */
+}
+
+.nav-link:hover {
+    color: #E9C579 !important;
+}
+
+.nav-link:hover::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: #E9C579;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.btn-custom {
+    background-color: #E9C579;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-family: 'Playfair Display', serif;
+    color: #4C2B08;
+}
+
+.btn-custom:hover {
+    background-color: #F9C06A;
+    color: #4C2B08;
+}
+
+.navbar {
+    background-color: #4b3f41a9;
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: #4b3f4144; 
+}
+
+.offcanvas {
+    background-color: #2C2526;
+}
+
+.offcanvas-title {
+    color: white;
+    font-family: 'Clicker Script', cursive;
+    font-size: 1.5rem;
+}
+
+.offcanvas-body .nav-link {
+    color: white;
+}
+
+.offcanvas-body .nav-link:hover {
+    color: #E9C579;
+}
+
+/* Cart Counter */
+#cartCounter {
+    font-size: 0.8rem;
+}
+
+/* Carousel Section */
+.carousel-section {
+    background: url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+    height: 100vh;
+    color: white;
+    position: relative;
+}
+
+.carousel-content {
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.858);
+}
+
+.carousel-section h1 {
+    font-size: 5rem;
+    color: #E9C579;
+}
+
+.carousel-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+}
+
+/* Main Section */
+#descubre {
+    background-color: #FFEED8;
+    position: relative;
+}
+
+#descubre::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('/exam3/images/25.png');
+    background-size: contain;
+    background-position: left center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+#descubre .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #603809;
+}
+
+.section-subtitle {
+    font-family: 'Clicker Script', cursive;
+    font-size: 2rem;
+    color: #AB7743;
+}
+
+.card {
+    border: none;
+    background-color: #c6af92;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #603809;
+}
+
+.card-text {
+    color: #707070;
+}
+
+/* Mejores Categorías */
+#mejores-categorias {
+    background-color: #D7BDA6;
+}
+
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #FFEED8;
+    padding: 20px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.category-card h5 {
+    margin-top: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #4C2B08;
+}
+
+/* Mejores Productos y Especiales */
+#mejores-productos, #especiales {
+    background-color: #FFEED8;
+}
+
+.product-card {
+    position: relative;
+    background-color: #FFF5EE;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #603809;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.discount-badge:empty {
+    display: none;
+}
+
+.product-icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product-icon {
+    background-color: #FFF5EE;
+    border: 1px solid #E9C579;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #AB7743;
+    font-size: 1rem;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.product-icon:hover {
+    color: #E9C579;
+    background-color: #F9C06A;
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.product-rating {
+    margin: 10px 0;
+}
+
+.product-rating .bi-star-fill, .product-rating .bi-star {
+    color: #E9C579;
+    font-size: 1rem;
+}
+
+.product-card h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #4C2B08;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    margin-bottom: 10px;
+}
+
+.original-price {
+    color: #707070;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+.original-price:empty {
+    display: none;
+}
+
+.discounted-price {
+    color: #4C2B08;
+    font-weight: bold;
+}
+
+/* Por Qué Somos Diferentes */
+#por-que-somos-diferentes {
+    background-color: #D7BDA6;
+    position: relative;
+}
+
+#por-que-somos-diferentes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: url('/exam3/images/24.png');
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+#por-que-somos-diferentes .container {
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card {
+    background-color: #FFEED8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.feature-card h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #4C2B08;
+}
+
+/* Nuestras Recetas */
+#nuestras-recetas {
+    background-color: #FFEED8;
+    background-image: url('/exam3/images/5.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 600px;
+}
+
+#nuestras-recetas .container {
+    position: relative;
+    z-index: 1;
+}
+
+.accordion {
+    background-color: rgba(255, 245, 238, 0.9);
+    border-radius: 10px;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 10px;
+}
+
+.accordion-button {
+    font-family: 'Playfair Display', serif;
+    color: #603809;
+    background-color: #FFF5EE;
+    border-radius: 10px !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #F9C06A;
+    color: #4C2B08;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-body {
+    background-color: #FFF5EE;
+    border-radius: 0 0 10px 10px;
+}
+
+.recipe-text {
+    flex: 1;
+    text-align: left;
+}
+
+.recipe-text h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #4C2B08;
+    margin-bottom: 10px;
+}
+
+.recipe-text p {
+    color: #707070;
+    font-size: 0.9rem;
+}
+
+.recipe-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-left: 20px;
+}
+
+/* Galería */
+#galeria {
+    background-color: #D7BDA6;
+}
+
+#galeria .section-title {
+    font-size: 2.5rem;
+    color: #603809;
+    text-transform: lowercase;
+}
+
+#galeria img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Specific heights for gallery images */
+#galeria .col-md-4 .gallery-item img {
+    height: 200px;
+}
+
+#galeria .col-md-4:nth-child(2) .gallery-item img {
+    height: 420px;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-icon {
+    color: #E9C579;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.gallery-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Reseñas */
+#reseñas {
+    background-color: #FFEED8;
+}
+
+#reseñas .card {
+    background-color: #F9C06A;
+}
+
+.card-subtitle {
+    color: #707070;
+}
+
+/* Suscribirse */
+#suscribirse {
+    background-color: #D7BDA6;
+    position: relative;
+}
+
+#suscribirse::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/exam3/images/19.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+#suscribirse .container {
+    position: relative;
+    z-index: 1;
+}
+
+#suscribirse .container p {
+    color: #FFC107;
+}
+
+#suscribirse .form-control {
+    border-radius: 20px;
+    border: 1px solid #AB7743;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-check-label {
+    color: #707070;
+}
+
+/* Footer */
+footer {
+    background-color: #2C2526;
+    color: white;
+}
+
+footer h5 {
+    font-family: 'Clicker Script', cursive;
+    color: #E9C579;
+}
+
+footer a {
+    color: #D7BDA6;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #E9C579;
+}
+
+/* Responsive Adjustments */
+
+/* Tablet (max-width: 991px) */
+@media (max-width: 991px) {
+    body {
+        padding-top: 100px; /* Reduced padding to account for smaller header */
+    }
+
+    /* Header Adjustments */
+    .navbar-nav {
+        flex-direction: row; /* Ensure horizontal layout */
+        justify-content: center; /* Center the nav links */
+        gap: 10px; /* Add spacing between nav links */
+    }
+
+    .container-hero .navbar-nav {
+        flex-direction: row !important; /* Force horizontal layout */
+    }
+
+    .nav-link {
+        font-size: 0.9rem; /* Smaller font size for tablet */
+        padding: 6px 10px; /* Reduced padding to prevent cramping */
+    }
+
+    .btn-custom {
+        font-size: 0.9rem; /* Smaller button text */
+        padding: 4px 12px; /* Reduced padding */
+        margin: 0 5px; /* Adjusted margin for horizontal layout */
+    }
+
+    /* Carousel Adjustments */
+    .carousel-section {
+        height: 70vh; /* Reduced height for better fit */
+    }
+
+    .carousel-content {
+        height: 70vh;
+    }
+
+    .carousel-section h1 {
+        font-size: 3rem; /* Smaller heading */
+    }
+
+    .carousel-section h2 {
+        font-size: 1.5rem; /* Smaller subheading */
+    }
+
+    /* Main Section Adjustments */
+    #descubre::before {
+        width: 40%; /* Slightly smaller image area */
+        background-size: 80%; /* Reduce image size */
+    }
+
+    /* Mejores Categorías */
+    .category-card img {
+        height: 180px; /* Slightly smaller images */
+    }
+
+    /* Mejores Productos y Especiales */
+    .product-card img {
+        height: 180px; /* Slightly smaller images */
+    }
+
+    /* Por Qué Somos Diferentes */
+    #por-que-somos-diferentes::before {
+        width: 40%; /* Slightly smaller image area */
+        background-size: 80%; /* Reduce image size */
+    }
+
+    /* Nuestras Recetas */
+    #nuestras-recetas {
+        min-height: 500px; /* Reduced height */
+    }
+
+    .recipe-image {
+        width: 90px;
+        height: 90px;
+    }
+
+    /* Galería */
+    #galeria .col-md-4 .gallery-item img {
+        height: 180px; 
+    }
+
+    #galeria .col-md-4:nth-child(2) .gallery-item img {
+        height: 380px; 
+    }
+}
+
+/* Mobile (max-width: 576px) */
+@media (max-width: 576px) {
+    body {
+        padding-top: 80px; 
+    }
+
+    /* Header Adjustments */
+    .navbar-brand {
+        font-size: 1.2rem; 
+    }
+
+    .logo-icon {
+        width: 30px; 
+        height: 30px;
+    }
+
+    .navbar-nav {
+        flex-direction: row; 
+        justify-content: center;
+        gap: 5px; 
+    }
+
+    .nav-link {
+        font-size: 0.75rem; 
+        padding: 5px 8px; 
+    }
+
+    .btn-custom {
+        font-size: 0.75rem; 
+        padding: 3px 10px; 
+    }
+
+    /* Carousel Adjustments */
+    .carousel-section {
+        height: 50vh; 
+        background-size: contain; 
+    }
+
+    .carousel-content {
+        height: 50vh;
+    }
+
+    .carousel-section h1 {
+        font-size: 2rem; 
+    }
+
+    .carousel-section h2 {
+        font-size: 1.2rem; 
+    }
+
+    /* Main Section Adjustments */
+    #descubre::before {
+        width: 30%; 
+        background-size: 60%; 
+        opacity: 0.3; 
+    }
+
+    .section-title {
+        font-size: 2rem; 
+    }
+
+    .section-subtitle {
+        font-size: 1.5rem; 
+    }
+
+    .card {
+        padding: 15px; 
+    }
+
+    /* Mejores Categorías */
+    .category-card {
+        padding: 15px; 
+    }
+
+    .category-card img {
+        height: 150px; 
+    }
+
+    /* Mejores Productos y Especiales */
+    .product-card {
+        padding: 15px; 
+    }
+
+    .product-card img {
+        height: 150px; 
+    }
+
+    .product-icon {
+        width: 25px; 
+        height: 25px;
+        font-size: 0.8rem;
+    }
+
+    /* Por Qué Somos Diferentes */
+    #por-que-somos-diferentes::before {
+        width: 30%; 
+        background-size: 60%; 
+        opacity: 0.3; 
+    }
+
+    .feature-card {
+        padding: 15px; 
+    }
+
+    /* Nuestras Recetas */
+    #nuestras-recetas {
+        min-height: 400px; 
+        background-size: 80%; 
+    }
+
+    .accordion-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recipe-text {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .recipe-image {
+        width: 80px;
+        height: 80px;
+        margin-left: 0;
+    }
+
+    /* Galería */
+    #galeria .col-md-4 .gallery-item img {
+        height: 150px; 
+    }
+
+    #galeria .col-md-4:nth-child(2) .gallery-item img {
+        height: 320px; 
+    }
+
+    /* Suscribirse */
+    #suscribirse .form-control {
+        font-size: 0.9rem; 
+    }
+
+    /* Footer */
+    footer h5 {
+        font-size: 1.5rem; 
+    }
+
+    footer a {
+        font-size: 0.9rem; 
+    }
+}

@@ -1,0 +1,968 @@
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>El Rincón del Café</title>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0">
+        <!-- Header -->
+    <header id="header" class="fixed-top">
+        <div class="container-hero py-2">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img src="/exam3/images/El (1).png" alt="Logo" class="me-2 logo-icon">
+                    <a class="navbar-brand text-white" href="#">El Rincón del Café</a>
+                </div>
+                <div class="d-flex align-items-center">
+                    <ul class="navbar-nav d-flex flex-row">
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2" href="#inicio">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2" href="#menu">Menú</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2" href="#sobre-nosotros">Sobre Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2" href="#contactanos">Contáctanos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-custom text-white ms-2" href="#suscribirse">Regístrate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white px-2 position-relative" href="#">
+                                <i class="bi bi-cart3"></i>
+                                <span id="cartCounter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav id="navbar" class="navbar">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">El Rincón del Café</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#inicio">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#menu">Menú</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#por-que-somos-diferentes">¿Por qué somos diferentes?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#nuestras-recetas">Nuestras recetas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#galeria">Galería</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reseñas">Reseñas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#suscribirse">Suscribirse</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contactanos">Contáctanos</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+        <!-- Toasts -->
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="freeShippingToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">¡Buenas noticias!</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Felicidades! Tienes envío gratis!
+                </div>
+            </div>
+            <div id="cartLimitToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <strong class="me-auto">Límite alcanzado</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    ¡Ops! Ya no puedes agregar más productos, finaliza tu compra.
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" placeholder="Contraseña" required>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="validateLogin()">Iniciar Sesión</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Section with Carousel -->
+        <section id="inicio" class="carousel-section">
+            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-content d-flex align-items-center" style="background: url('/exam3/images/img/banner.jpg') no-repeat center center/cover;">
+                            <div class="container text-start">
+                                <h2 class="display-4">Nosotros tenemos tu mañana cubierta de</h2>
+                                <h1 class="display-1 fw-bold">CAFÉ</h1>
+                                <p class="lead">Lo mejor es compartir el día con una taza de café. Descubre los mejores sabores que jamás probaste, ofrecemos las mejores opciones para ti y tus amigos.</p>
+                                <a href="#menu" class="btn btn-custom">Ordenar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content d-flex align-items-center" style="background: url('/exam3/images/img/capuchino-category.jpg') no-repeat center center/cover;">
+                            <div class="container text-start">
+                                <h2 class="display-4">Disfruta un café único</h2>
+                                <h1 class="display-1 fw-bold">CAFÉ</h1>
+                                <p class="lead">Cada taza está hecha con amor y los mejores granos. Ven y prueba la diferencia hoy mismo.</p>
+                                <a href="#menu" class="btn btn-custom">Ordenar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content d-flex align-items-center" style="background: url('/exam3/images/Fondo.jpeg') no-repeat center center/cover;">
+                            <div class="container text-start">
+                                <h2 class="display-4">Tu día comienza aquí</h2>
+                                <h1 class="display-1 fw-bold">CAFÉ</h1>
+                                <p class="lead">Un café que despierta tus sentidos. Perfecto para cualquier momento del día.</p>
+                                <a href="#menu" class="btn btn-custom">Ordenar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="carousel-content d-flex align-items-center" style="background: url('/exam3/images/img/gallery1.jpg') no-repeat center center/cover;">
+                            <div class="container text-start">
+                                <h2 class="display-4">El sabor que te encanta</h2>
+                                <h1 class="display-1 fw-bold">CAFÉ</h1>
+                                <p class="lead">Sabores únicos que te harán volver por más. Descubre tu favorito hoy.</p>
+                                <a href="#menu" class="btn btn-custom">Ordenar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Section Main -->
+        <section id="descubre" class="py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center">
+                        <h2 class="section-title">Descubre el mejor café</h2>
+                        <p>Todo en esta cafetería es para ofrecerte café de calidad, para que ames lo que bebes. Tonifica tu taza de café y prueba un mundo de sabor que hará que cada día sea un poco más dulce.</p>
+                        <a href="#menu" class="btn btn-custom">Leer Más</a>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="/exam3/images/2.png" alt="Café" class="img-fluid">
+                    </div>
+                </div>
+                <div class="row mt-5 text-center">
+                    <h3 class="section-subtitle">Disfruta de un café</h3>
+                    <p class="text-center">Explora todos los sabores del café con nosotros. Siempre hay una taza de café que vale la pena probar.</p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="/exam3/images/capuchino.png" class="card-img-top" alt="Capuchino">
+                                <div class="card-body">
+                                    <h5 class="card-title">Capuchino</h5>
+                                    <p class="card-text">$80.00</p>
+                                    <button class="btn btn-custom add-to-cart" data-product="Capuchino">Ordenar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="/exam3/images/Chai_latte.png" class="card-img-top" alt="Chai Latte">
+                                <div class="card-body">
+                                    <h5 class="card-title">Chai Latte</h5>
+                                    <p class="card-text">$85.00</p>
+                                    <button class="btn btn-custom add-to-cart" data-product="Chai Latte">Ordenar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="/exam3/images/Macchiato.png" class="card-img-top" alt="Marrochino">
+                                <div class="card-body">
+                                    <h5 class="card-title">Marrochino</h5>
+                                    <p class="card-text">$80.00</p>
+                                    <button class="btn btn-custom add-to-cart" data-product="Marrochino">Ordenar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card">
+                                <img src="/exam3/images/espresso.png" class="card-img-top" alt="Expreso">
+                                <div class="card-body">
+                                    <h5 class="card-title">Expreso</h5>
+                                    <p class="card-text">$85.00</p>
+                                    <button class="btn btn-custom add-to-cart" data-product="Expreso">Ordenar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mejores Productos -->
+        <section id="mejores-productos" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Mejores Productos</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-13%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/1.png" alt="Café Irish">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Irish</h5>
+                            <div class="product-price">
+                                <span class="original-price">$5.30</span>
+                                <span class="discounted-price">$4.60</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Irish">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-22%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/6.png" alt="Café Inglés">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Inglés</h5>
+                            <div class="product-price">
+                                <span class="original-price">$7.30</span>
+                                <span class="discounted-price">$5.70</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Inglés">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-30%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/8.png" alt="Café Viena">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <h5>Café Viena</h5>
+                            <div class="product-price">
+                                <span class="original-price">$5.50</span>
+                                <span class="discounted-price">$3.85</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Viena">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge"></div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/9.png" alt="Café Liqueurs">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Liqueurs</h5>
+                            <div class="product-price">
+                                <span class="original-price"></span>
+                                <span class="discounted-price">$5.60</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Liqueurs">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Por Qué Somos Diferentes -->
+        <section id="por-que-somos-diferentes" class="py-5 text-center">
+            <div class="container">
+                <h2 class="section-title">¿Por qué somos diferentes?</h2>
+                <p>No solo hacemos café, ¡hacemos la diferencia!</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <i class="bi bi-cup-hot mb-3" style="font-size: 2rem; color: #603809;"></i>
+                            <h5>Mejor grano de café para un gran sabor</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <i class="bi bi-award mb-3" style="font-size: 2rem; color: #603809;"></i>
+                            <h5>Alta calidad ofrecemos lo mejor</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <i class="bi bi-heart-fill mb-3" style="font-size: 2rem; color: #603809;"></i>
+                            <h5>Extraordinario un café con amor para ti</h5>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <i class="bi bi-wallet2 mb-3" style="font-size: 2rem; color: #603809;"></i>
+                            <h5>Buenos precios nuestra precisión es tu felicidad</h5>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-custom mt-4" data-bs-toggle="modal" data-bs-target="#comienzaModal">Comienza hoy</button>
+            </div>
+        </section>
+
+        <!-- Modal for Comienza Hoy -->
+        <div class="modal fade" id="comienzaModal" tabindex="-1" aria-labelledby="comienzaModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="comienzaModalLabel">Comienza Hoy</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Únete a nuestra comunidad y disfruta de los mejores cafés. Regístrate ahora para comenzar tu experiencia con nosotros.</p>
+                        <a href="#suscribirse" class="btn btn-custom">Regístrate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nuestras Recetas (Accordion) -->
+        <section id="nuestras-recetas" class="py-5 text-center">
+            <div class="container">
+                <h2 class="section-title">Nuestras Recetas</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="accordion" id="recetasAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Latte
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#recetasAccordion">
+                                    <div class="accordion-body d-flex align-items-center">
+                                        <div class="recipe-text">
+                                            <h5>Matcha Latte</h5>
+                                            <p>Mezcla 1 cucharadita de matcha en polvo con 2 cucharadas de agua caliente y bate hasta obtener una mezcla suave. Calienta 1 taza de leche, espuma y vierte sobre el matcha. Endulza con miel si lo deseas.</p>
+                                        </div>
+                                        <img src="/exam3/images/9.png" alt="Matcha Latte" class="recipe-image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Capuchinos
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#recetasAccordion">
+                                    <div class="accordion-body d-flex align-items-center">
+                                        <div class="recipe-text">
+                                            <h5>Capuchino Clásico</h5>
+                                            <p>Prepare un espresso. Caliente media taza de leche hasta que esté espumosa. Vierta el espresso en una taza, agregue la leche vaporizada y cubra con espuma.</p>
+                                        </div>
+                                        <img src="/exam3/images/1.png" alt="Capuchino" class="recipe-image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Café Frío
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#recetasAccordion">
+                                    <div class="accordion-body d-flex align-items-center">
+                                        <div class="recipe-text">
+                                            <h5>Iced Coffee</h5>
+                                            <p>Prepare una taza de café fuerte y déjelo enfriar. Llene un vaso con hielo, vierta el café, añada 1/4 de taza de leche fría y endulce al gusto.</p>
+                                        </div>
+                                        <img src="/exam3/images/8.png" alt="Café Frío" class="recipe-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Especiales -->
+        <section id="especiales" class="py-5 text-center">
+            <div class="container">
+                <h2 class="section-title">Especiales</h2>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-13%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/12.png" alt="Café Irish">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Irish</h5>
+                            <div class="product-price">
+                                <span class="original-price">$5.30</span>
+                                <span class="discounted-price">$4.60</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Irish">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-22%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/13.png" alt="Café Australiano">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <h5>Café Australiano</h5>
+                            <div class="product-price">
+                                <span class="original-price"></span>
+                                <span class="discounted-price">$3.20</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Australiano">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge"></div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/14.png" alt="Café Helado">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Helado</h5>
+                            <div class="product-price">
+                                <span class="original-price"></span>
+                                <span class="discounted-price">$5.60</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Helado">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="discount-badge">-22%</div>
+                            <div class="product-icons">
+                                <i class="bi bi-eye product-icon"></i>
+                                <i class="bi bi-heart product-icon"></i>
+                                <i class="bi bi-share product-icon"></i>
+                            </div>
+                            <img src="/exam3/images/15.png" alt="Café Inglés">
+                            <div class="product-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star"></i>
+                            </div>
+                            <h5>Café Inglés</h5>
+                            <div class="product-price">
+                                <span class="original-price">$7.30</span>
+                                <span class="discounted-price">$5.70</span>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Café Inglés">
+                                <i class="bi bi-cart3 me-2"></i>Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería -->
+        <section id="galeria" class="py-5 text-center">
+            <div class="container">
+                <h2 class="section-title">Galería</h2>
+                <div class="row">
+                    <!-- Left column: Two smaller images stacked vertically -->
+                    <div class="col-md-4 d-flex flex-column gap-3">
+                        <div class="gallery-item">
+                            <img src="/exam3/images/img/gallery1.jpg" alt="Galería 1" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-eye gallery-icon"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/exam3/images/img/gallery2.jpg" alt="Galería 2" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-eye gallery-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Center column: Large central image -->
+                    <div class="col-md-4">
+                        <div class="gallery-item">
+                            <img src="/exam3/images/img/gallery3.jpg" alt="Galería 3" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-eye gallery-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right column: Two smaller images stacked vertically -->
+                    <div class="col-md-4 d-flex flex-column gap-3">
+                        <div class="gallery-item">
+                            <img src="/exam3/images/img/gallery4.jpg" alt="Galería 4" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-eye gallery-icon"></i>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="/exam3/images/img/gallery5.jpg" alt="Galería 5" class="img-fluid">
+                            <div class="gallery-overlay">
+                                <i class="bi bi-eye gallery-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a href="#menu" class="btn btn-custom mt-4">Ordenar</a>
+            </div>
+        </section>
+
+        <!-- Reseñas (Card Section with Carousel) -->
+        <section id="reseñas" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Nuestras reseñas nos dicen nuestros clientes</h2>
+            <div id="reseñasCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Review 1 -->
+                    <div class="carousel-item active">
+                        <div class="card mx-auto" style="max-width: 500px;">
+                            <div class="card-body text-center">
+                                <p class="card-text">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                <h5 class="card-title">Luis López</h5>
+                                <p class="card-subtitle">Cliente frecuente</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="carousel-item">
+                        <div class="card mx-auto" style="max-width: 500px;">
+                            <div class="card-body text-center">
+                                <p class="card-text">El café aquí es simplemente increíble. Me encanta la variedad de sabores y la atención al detalle en cada taza. ¡Definitivamente mi lugar favorito para relajarme!</p>
+                                <h5 class="card-title">María Gómez</h5>
+                                <p class="card-subtitle">Amante del café</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="carousel-item">
+                        <div class="card mx-auto" style="max-width: 500px;">
+                            <div class="card-body text-center">
+                                <p class="card-text">Un ambiente acogedor y un café de primera calidad. Siempre que vengo, me siento como en casa. ¡Recomiendo probar el capuchino, es el mejor que he probado!</p>
+                                <h5 class="card-title">Carlos Ramírez</h5>
+                                <p class="card-subtitle">Cliente habitual</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#reseñasCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#reseñasCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+        <!-- Suscribirse (Form Section) -->
+        <section id="suscribirse" class="py-5 text-center">
+            <div class="container">
+                <h2 class="section-title">Suscríbete para ordenar fácilmente</h2>
+                <p>No pierdas nuestras últimas noticias, conoce, ofertas y más</p>
+                <form id="subscribeForm" class="mx-auto" style="max-width: 500px;" onsubmit="validateSubscribe(event)">
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="subscribeEmail" placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="subscribeName" placeholder="Nombre de usuario" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="subscribeFullName" placeholder="Nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="subscribePassword" placeholder="Contraseña" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="subscribeCheck" required>
+                        <label class="form-check-label" for="subscribeCheck">Acepto términos y condiciones</label>
+                    </div>
+                    <button type="submit" class="btn btn-custom">Crear Cuenta</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contactanos" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>El Rincón del Café</h5>
+                        <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Acerca</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Compañía</a></li>
+                            <li><a href="#">Carrera</a></li>
+                            <li><a href="#">Candidatos</a></li>
+                            <li><a href="#">Precios</a></li>
+                            <li><a href="#">Ayuda y soporte</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h5>Compañía</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Servicios</a></li>
+                            <li><a href="#">Productos</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Nuevas</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Contactanos</h5>
+                        <p>Vanesa Velazquez Rodriguez 466 260 93 60</p>
+                        <p>elrincondelcafe@email.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+            let cartCount = 0;
+            let freeShippingShown = false;
+
+            function validateLogin() {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                if (!email || !password) {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+                if (!/\S+@\S+\.\S+/.test(email)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    return;
+                }
+                alert('Inicio de sesión exitoso');
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+                bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            }
+
+            function validateSubscribe(event) {
+                event.preventDefault();
+                const email = document.getElementById('subscribeEmail').value;
+                const name = document.getElementById('subscribeName').value;
+                const fullName = document.getElementById('subscribeFullName').value;
+                const password = document.getElementById('subscribePassword').value;
+                const check = document.getElementById('subscribeCheck').checked;
+
+                if (!email || !name || !fullName || !password || !check) {
+                    alert('Por favor, completa todos los campos y acepta los términos.');
+                    return;
+                }
+                if (!/\S+@\S+\.\S+/.test(email)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    return;
+                }
+                if (password.length < 8) {
+                    alert('La contraseña debe tener al menos 8 caracteres.');
+                    return;
+                }
+                alert('Registro exitoso');
+                document.getElementById('subscribeForm').reset();
+            }
+
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (cartCount >= 5) {
+                        const toast = new bootstrap.Toast(document.getElementById('cartLimitToast'));
+                        toast.show();
+                        return;
+                    }
+
+                    cartCount++;
+                    document.getElementById('cartCounter').textContent = cartCount;
+
+                    if (cartCount === 3 && !freeShippingShown) {
+                        const toast = new bootstrap.Toast(document.getElementById('freeShippingToast'));
+                        toast.show();
+                        freeShippingShown = true;
+                    }
+                });
+            });
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let cartCount = 0;
+            let freeShippingShown = false;
+
+            window.validateLogin = function() {
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                if (!email || !password) {
+                    console.error('Email or password input not found');
+                    return;
+                }
+
+                const emailValue = email.value;
+                const passwordValue = password.value;
+
+                if (!emailValue || !passwordValue) {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+                if (!/\S+@\S+\.\S+/.test(emailValue)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    return;
+                }
+
+                alert('Inicio de sesión exitoso');
+                email.value = '';
+                password.value = '';
+
+                // Close the modal using Bootstrap's data API
+                const modalElement = document.getElementById('loginModal');
+                const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+                modal.hide();
+            };
+
+            window.validateSubscribe = function(event) {
+                event.preventDefault();
+                const email = document.getElementById('subscribeEmail');
+                const name = document.getElementById('subscribeName');
+                const fullName = document.getElementById('subscribeFullName');
+                const password = document.getElementById('subscribePassword');
+                const check = document.getElementById('subscribeCheck');
+
+                if (!email || !name || !fullName || !password || !check) {
+                    console.error('One or more subscribe form inputs not found');
+                    return;
+                }
+
+                const emailValue = email.value;
+                const nameValue = name.value;
+                const fullNameValue = fullName.value;
+                const passwordValue = password.value;
+                const checkValue = check.checked;
+
+                if (!emailValue || !nameValue || !fullNameValue || !passwordValue || !checkValue) {
+                    alert('Por favor, completa todos los campos y acepta los términos.');
+                    return;
+                }
+                if (!/\S+@\S+\.\S+/.test(emailValue)) {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                    return;
+                }
+                if (passwordValue.length < 8) {
+                    alert('La contraseña debe tener al menos 8 caracteres.');
+                    return;
+                }
+
+                alert('Registro exitoso');
+                document.getElementById('subscribeForm').reset();
+            };
+
+            window.addEventListener('scroll', function() {
+                const header = document.getElementById('header');
+                const containerHero = document.querySelector('.container-hero');
+                const navbar = document.getElementById('navbar');
+
+                if (!header || !containerHero || !navbar) {
+                    console.error('Header, container-hero, or navbar not found');
+                    return;
+                }
+
+                if (window.scrollY > 50) {
+                    containerHero.style.display = 'none'; // Hide the container-hero on scroll
+                    navbar.classList.add('scrolled'); // Add scrolled class to navbar for transparency
+                    header.style.height = 'auto'; // Adjust header height to fit only the navbar
+                } else {
+                    containerHero.style.display = 'block'; // Show container-hero when at the top
+                    navbar.classList.remove('scrolled'); // Remove scrolled class from navbar
+                    header.style.height = 'auto'; // Reset header height
+                }
+            });
+
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            if (addToCartButtons.length === 0) {
+                console.warn('No add-to-cart buttons found');
+            }
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const cartCounter = document.getElementById('cartCounter');
+                    if (!cartCounter) {
+                        console.error('Cart counter element not found');
+                        return;
+                    }
+
+                    if (cartCount >= 5) {
+                        const cartLimitToastElement = document.getElementById('cartLimitToast');
+                        if (cartLimitToastElement) {
+                            const toast = new bootstrap.Toast(cartLimitToastElement);
+                            toast.show();
+                        } else {
+                            console.error('Cart limit toast element not found');
+                        }
+                        return;
+                    }
+
+                    cartCount++;
+                    cartCounter.textContent = cartCount;
+
+                    if (cartCount === 3 && !freeShippingShown) {
+                        const freeShippingToastElement = document.getElementById('freeShippingToast');
+                        if (freeShippingToastElement) {
+                            const toast = new bootstrap.Toast(freeShippingToastElement);
+                            toast.show();
+                            freeShippingShown = true;
+                        } else {
+                            console.error('Free shipping toast element not found');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    </body>
+    </html>
